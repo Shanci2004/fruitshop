@@ -15,6 +15,11 @@ public class UserRegisterServlet extends HttpServlet {
     private UserService uService = new UserService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = new User();
         try {
             BeanUtils.copyProperties(user, request.getParameterMap());
@@ -28,12 +33,5 @@ public class UserRegisterServlet extends HttpServlet {
         }else{
             request.setAttribute("msg","Failed!Please try again!");
         }
-
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
     }
 }
