@@ -44,7 +44,7 @@ public class UserRegisterServlet extends HttpServlet {
             JSONObject jsonObject1 = new JSONObject();
             jsonObject1.put("meta", jsonArray);
             PrintWriter out = response.getWriter();
-            out.print(jsonObject1);
+            out.print(jsonObject);
             out.flush();
             out.close();
         }else{
