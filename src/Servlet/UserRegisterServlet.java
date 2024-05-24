@@ -2,11 +2,14 @@ package Servlet;
 
 import Service.UserService;
 import model.User;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import javax.servlet.annotation.WebServlet;
 
@@ -29,9 +32,23 @@ public class UserRegisterServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
         if(uService.register(user)){
-            request.setAttribute("msg","Success!Please Login!");
+            JSONObject jsonObject = new JSONObject();
+            JSONArray jsonArray = new JSONArray();
+            int j = 10;
+            for(int i = 0; i < 10; i++){
+                jsonObject.put("i", i);
+                jsonObject.put("j", j);
+                jsonArray.add(jsonObject);
+            }
+
+            JSONObject jsonObject1 = new JSONObject();
+            jsonObject1.put("meta", jsonArray);
+            PrintWriter out = response.getWriter();
+            out.print(jsonObject1);
+            out.flush();
+            out.close();
         }else{
-            request.setAttribute("msg","Failed!Please try again!");
+
         }
     }
 }
