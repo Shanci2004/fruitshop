@@ -33,7 +33,7 @@ public class UserRegisterServlet extends HttpServlet {
         }
         if(uService.register(user)){
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("code",200);
+            jsonObject.put("code",true);
             jsonObject.put("msg","注册成功");
             PrintWriter out = response.getWriter();
             out.print(jsonObject);
@@ -41,7 +41,7 @@ public class UserRegisterServlet extends HttpServlet {
             out.close();
         }else{
             JSONObject jsonObject= new JSONObject();
-            jsonObject.put("code",500);
+            jsonObject.put("code",false);
             jsonObject.put("msg","注册失败");
             PrintWriter out = response.getWriter();
             out.print(jsonObject);
