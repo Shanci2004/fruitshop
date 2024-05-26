@@ -29,12 +29,16 @@ public class UserLoginServlet extends HttpServlet {
             jsonObject.put("failMsg", "用户名或账号或密码错误，请重新登录！");
             PrintWriter out = response.getWriter();
             out.print(jsonObject);
+            out.flush();
+            out.close();
         }else{
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("code", true);
             jsonObject.put("msg", "登录成功！欢迎您，" + user.getUserName());
             PrintWriter out = response.getWriter();
             out.print(jsonObject);
+            out.flush();
+            out.close();
         }
     }
 }
