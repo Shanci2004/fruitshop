@@ -32,9 +32,13 @@ public class UserLoginServlet extends HttpServlet {
             out.flush();
             out.close();
         }else{
+            HttpSession session = request.getSession();
+            session.setAttribute("userName", user.getUserName());
+            Object username = session.getAttribute("userName");
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("code", true);
-            jsonObject.put("msg", "登录成功！欢迎您，" + user.getUserName());
+            jsonObject.put("msg", "登录成功");
+            jsonObject.put("username", username);
             PrintWriter out = response.getWriter();
             out.print(jsonObject);
             out.flush();
