@@ -33,22 +33,20 @@ public class UserRegisterServlet extends HttpServlet {
         }
         if(uService.register(user)){
             JSONObject jsonObject = new JSONObject();
-            JSONArray jsonArray = new JSONArray();
-            int j = 10;
-            for(int i = 0; i < 10; i++){
-                jsonObject.put("i", i);
-                jsonObject.put("j", j);
-                jsonArray.add(jsonObject);
-            }
-
-            JSONObject jsonObject1 = new JSONObject();
-            jsonObject1.put("meta", jsonArray);
+            jsonObject.put("code",200);
+            jsonObject.put("msg","注册成功");
             PrintWriter out = response.getWriter();
             out.print(jsonObject);
             out.flush();
             out.close();
         }else{
-
+            JSONObject jsonObject= new JSONObject();
+            jsonObject.put("code",500);
+            jsonObject.put("msg","注册失败");
+            PrintWriter out = response.getWriter();
+            out.print(jsonObject);
+            out.flush();
+            out.close();
         }
     }
 }
