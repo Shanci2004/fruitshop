@@ -35,7 +35,7 @@ public class GlobalFilter implements Filter {
         /* 星号表示所有的异域请求都可以接受， */
         response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 
-        if (request.getRequestURI().equals("/fruit/login")){
+        if (request.getRequestURI().equals("/fruit/user_login")){
             filterChain.doFilter(request, response);
             return;
         }
