@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "UserLoginServlet", urlPatterns = "/UserLoginServlet")
+@WebServlet(name = "UserLoginServlet", urlPatterns = "/user_login")
 public class UserLoginServlet extends HttpServlet {
     private UserService userService = new UserService();
     @Override
