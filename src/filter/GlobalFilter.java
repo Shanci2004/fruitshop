@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.ResultSet;
 
 @WebFilter(filterName = "globalFilter", urlPatterns = {"/*"})
 public class GlobalFilter implements Filter {
@@ -38,8 +39,10 @@ public class GlobalFilter implements Filter {
         if (request.getRequestURI().equals("/fruit/user_login")){
             filterChain.doFilter(request, response);
             return;
-        }
-        else if(request.getSession().getAttribute("username") == null){
+        }else if(request.getRequestURI().equals("/fruit/user_register")){
+            filterChain.doFilter(request, response);
+            return;
+        }else if(request.getSession().getAttribute("username") == null){
             JSONObject res = new JSONObject();
             res.put("code", false);
             res.put("status", 200);
