@@ -42,7 +42,7 @@ public class GlobalFilter implements Filter {
         }else if(request.getRequestURI().equals("/fruit/user_register")){
             filterChain.doFilter(request, response);
             return;
-        }else if(request.getSession().getAttribute("username") == null){
+        }else if(request.getSession().getAttribute("user") == null){
             JSONObject res = new JSONObject();
             res.put("code", false);
             res.put("status", 200);

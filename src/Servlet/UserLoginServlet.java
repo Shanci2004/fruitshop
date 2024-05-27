@@ -26,19 +26,19 @@ public class UserLoginServlet extends HttpServlet {
         if(user == null){
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("code", false);
-            jsonObject.put("failMsg", "用户名或账号或密码错误，请重新登录！");
+            jsonObject.put("msg", "用户名或账号或密码错误，请重新登录！");
             PrintWriter out = response.getWriter();
             out.print(jsonObject);
             out.flush();
             out.close();
         }else{
             HttpSession session = request.getSession();
-            session.setAttribute("userName", user.getUserName());
-            Object username = session.getAttribute("userName");
+            session.setAttribute("user", user);
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("code", true);
             jsonObject.put("msg", "登录成功");
-            jsonObject.put("username", username);
+            jsonObject.put("user", user);
+            jsonObject.put("isadmin", user.isIsadmin());
             PrintWriter out = response.getWriter();
             out.print(jsonObject);
             out.flush();
