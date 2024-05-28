@@ -23,7 +23,8 @@ public class UploadImageServlet extends HttpServlet {
         String storePath = "C:\\Users\\29424\\Desktop\\小组实验\\FruitShop\\web\\avatar\\";
         //
         String filename = System.currentTimeMillis() + avatar.getSubmittedFileName();//保证图片名不重复
-        avatar.write(storePath + "/" + filename);
+        storePath += filename;
+        avatar.write(storePath);
 
     }
 }
