@@ -20,7 +20,7 @@ public class UploadImageServlet extends HttpServlet {
         //获取头像图片存入Part中
         Part avatar = request.getPart("avatar");
         //storePath将头像存入某处
-        String storePath = "web/avatar";
+        String storePath = "C:\\Users\\29424\\Desktop\\小组实验\\FruitShop\\web\\avatar\\";
         //
         String filename = System.currentTimeMillis() + avatar.getSubmittedFileName();//保证图片名不重复
         avatar.write(storePath + "/" + filename);
