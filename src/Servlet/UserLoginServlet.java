@@ -31,6 +31,7 @@ public class UserLoginServlet extends HttpServlet {
             out.print(jsonObject);
             out.flush();
             out.close();
+            request.getRequestDispatcher("/index").forward(request, response);
         }else{
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
@@ -43,6 +44,7 @@ public class UserLoginServlet extends HttpServlet {
             out.print(jsonObject);
             out.flush();
             out.close();
+            request.getRequestDispatcher("/index").forward(request, response);
         }
     }
 }
