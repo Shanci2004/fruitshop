@@ -1,12 +1,14 @@
 package Servlet;
 
 import javax.servlet.*;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 import java.io.File;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "UploadImageServlet", urlPatterns = "/Upload_Image")
+@MultipartConfig
 public class UploadImageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
