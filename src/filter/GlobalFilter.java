@@ -23,6 +23,8 @@ public class GlobalFilter implements Filter {
 
         HttpServletResponse response = (HttpServletResponse)servletResponse;
 
+        request.setCharacterEncoding("UTF-8");
+
         response.setCharacterEncoding("UTF-8");
 
         response.setContentType("application/json;charset=utf-8");
