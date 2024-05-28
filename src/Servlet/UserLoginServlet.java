@@ -45,7 +45,6 @@ public class UserLoginServlet extends HttpServlet {
             out.flush();
             out.close();
             request.getRequestDispatcher("/index").forward(request, response);
-
         }
     }
 }
