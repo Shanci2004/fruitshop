@@ -35,6 +35,7 @@ public class UserChangeInfo extends HttpServlet {
         storePath += filename;
         avatar.write(storePath);
 
+
         user.setUserName(request.getParameter("userName"));
         user.setPhone(request.getParameter("phone"));
         user.setAvatar(storePath);

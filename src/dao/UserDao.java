@@ -55,12 +55,12 @@ public class UserDao {
     public void updatePassword(User user) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "update user set password = ? where userId = ?";
-        runner.update(sql, user.getPassword(), user.getId());
+        runner.update(sql, user.getPassword(), user.getUserId());
     }
     //更改信息
     public void updateInfo(User user) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "update user set avatar = ?, userName = ?, phone = ? where userId = ?";
-        runner.update(sql, user.getAvatar(), user.getUserName(), user.getPhone(), user.getId());
+        runner.update(sql, user.getAvatar(), user.getUserName(), user.getPhone(), user.getUserId());
     }
 }
