@@ -6,6 +6,7 @@ import net.sf.json.JSONObject;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.*;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "UserChangeInfo", urlPatterns = "/User_ChangeInfo")
+@MultipartConfig
 public class UserChangeInfo extends HttpServlet {
     private UserService userService = new UserService();
     @Override
