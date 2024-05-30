@@ -23,8 +23,21 @@ public class UserChangeInfo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
+
         try {
             BeanUtils.copyProperties(user, request.getParameterMap());
+
+            //获取头像图片存入Part中
+            Part avatar = request.getPart("picture");
+            //storePath将头像存入某处
+            String storePath = "web/avatar";
+            //
+            String filename = System.currentTimeMillis() + avatar.getSubmittedFileName();//保证图片名不重复
+            storePath += filename;
+            avatar.write(storePath);
+            user.setAvatar(storePath);
+
+            userService.changeInfo(user);
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         } catch (InvocationTargetException e) {
