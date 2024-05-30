@@ -26,25 +26,21 @@ public class UserChangeInfo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
 
-        try {
-            //获取头像图片存入Part中
-            Part avatar = request.getPart("avatar");
-            //storePath将头像存入某处
-            String storePath = "C:\\Users\\29424\\Desktop\\小组实验\\FruitShop\\web\\avatar\\";
-            //
-            String filename = System.currentTimeMillis() + avatar.getSubmittedFileName();//保证图片名不重复
-            storePath += filename;
-            avatar.write(storePath);
+        //获取头像图片存入Part中
+        Part avatar = request.getPart("avatar");
+        //storePath将头像存入某处
+        String storePath = "C:\\Users\\29424\\Desktop\\小组实验\\FruitShop\\web\\avatar\\";
+        //
+        String filename = System.currentTimeMillis() + avatar.getSubmittedFileName();//保证图片名不重复
+        storePath += filename;
+        avatar.write(storePath);
 
-            BeanUtils.copyProperties(user, request.getParameterMap());
-            user.setAvatar(storePath);
+        user.setUserName(request.getParameter("userName"));
+        user.setPhone(request.getParameter("phone"));
+        user.setAvatar(storePath);
 
-            userService.changeInfo(user);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        }
+        userService.changeInfo(user);
+
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", true);
