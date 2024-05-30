@@ -39,7 +39,7 @@ public class UserDao {
             return true;
         }
     }
-
+    //登录业务
     public User selectbyAccountPassword(String account, String password) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from user where account = ? and password = ?";
@@ -51,5 +51,16 @@ public class UserDao {
         String sql = "select * from user where userName = ? and password = ?";
         return runner.query(sql, new BeanHandler<User>(User.class), userName, password);
     }
-
+    //更改密码
+    public void updatePassword(User user) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "update user set password = ? where userId = ?";
+        runner.update(sql, user.getPassword(), user.getId());
+    }
+    //更改信息
+    public void updateInfo(User user) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "update user set avatar = ?, userName = ?, phone = ? where userId = ?";
+        runner.update(sql, user.getAvatar(), user.getUserName(), user.getPhone(), user.getId());
+    }
 }

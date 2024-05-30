@@ -2,17 +2,15 @@ package model;
 
 public class User {
     private int id;
-    private String name;
     private String userName;
     private String account;
     private String password;
     private String avatar;
     private String phone;
-    private String address;
     private boolean isadmin = false;
 
     public User() {
-        avatar = "D:\\idea-java\\FruitShop\\web\\avatar\\avatar1.jpeg";
+
     }
 
     public int getId() {
@@ -21,14 +19,6 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getUserName() {
@@ -71,14 +61,6 @@ public class User {
         this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public boolean isIsadmin() {
         return isadmin;
     }
@@ -87,15 +69,13 @@ public class User {
         this.isadmin = isadmin;
     }
 
-    public User(int id, String name, String userName, String account, String password, String avatar, String phone, String address, boolean isadmin) {
+    public User(int id, String userName, String account, String password, String avatar, String phone, boolean isadmin) {
         this.id = id;
-        this.name = name;
         this.userName = userName;
         this.account = account;
         this.password = password;
         this.avatar = avatar;
         this.phone = phone;
-        this.address = address;
         this.isadmin = isadmin;
     }
 
@@ -103,13 +83,11 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", userName='" + userName + '\'' +
                 ", account='" + account + '\'' +
                 ", password='" + password + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
                 ", isadmin=" + isadmin +
                 '}';
     }

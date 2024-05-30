@@ -44,6 +44,21 @@ public class UserService {
         }
         return null;
     }
-
+    //修改密码
+    public void changePwd(User user){
+        try {
+            uDao.updatePassword(user);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //修改信息
+    public void changeInfo(User user){
+        try {
+            uDao.updateInfo(user);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }
