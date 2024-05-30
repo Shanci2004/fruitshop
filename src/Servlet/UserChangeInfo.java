@@ -33,7 +33,7 @@ public class UserChangeInfo extends HttpServlet {
             BeanUtils.copyProperties(user, request.getParameterMap());
 
             //storePath将头像存入某处
-            String storePath = "web/avatar";
+            String storePath = "web/avatar/";
             //
             String filename = System.currentTimeMillis() + avatar.getSubmittedFileName();//保证图片名不重复
             storePath += filename;
