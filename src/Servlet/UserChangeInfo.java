@@ -28,7 +28,7 @@ public class UserChangeInfo extends HttpServlet {
             BeanUtils.copyProperties(user, request.getParameterMap());
 
             //获取头像图片存入Part中
-            Part avatar = request.getPart("picture");
+            Part avatar = request.getPart("avatar");
             //storePath将头像存入某处
             String storePath = "web/avatar";
             //
