@@ -27,10 +27,11 @@ public class UserChangeInfo extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
 
         try {
-            BeanUtils.copyProperties(user, request.getParameterMap());
-
             //获取头像图片存入Part中
             Part avatar = request.getPart("avatar");
+
+            BeanUtils.copyProperties(user, request.getParameterMap());
+
             //storePath将头像存入某处
             String storePath = "web/avatar";
             //
