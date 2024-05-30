@@ -29,15 +29,14 @@ public class UserChangeInfo extends HttpServlet {
         try {
             //获取头像图片存入Part中
             Part avatar = request.getPart("avatar");
-
-            BeanUtils.copyProperties(user, request.getParameterMap());
-
             //storePath将头像存入某处
             String storePath = "C:\\Users\\29424\\Desktop\\小组实验\\FruitShop\\web\\avatar\\";
             //
             String filename = System.currentTimeMillis() + avatar.getSubmittedFileName();//保证图片名不重复
             storePath += filename;
             avatar.write(storePath);
+
+            BeanUtils.copyProperties(user, request.getParameterMap());
             user.setAvatar(storePath);
 
             userService.changeInfo(user);
