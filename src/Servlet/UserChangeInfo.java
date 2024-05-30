@@ -36,7 +36,7 @@ public class UserChangeInfo extends HttpServlet {
         avatar.write(storePath);
 
 
-        String avatarname = "web/avatar/" + filename;
+        String avatarname = "avatar/" + filename;
         user.setUserName(request.getParameter("userName"));
         user.setPhone(request.getParameter("phone"));
         user.setAvatar(avatarname);
