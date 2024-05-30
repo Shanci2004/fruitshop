@@ -79,4 +79,17 @@ public class Address {
         this.label = label;
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", region='" + region + '\'' +
+                ", area='" + area + '\'' +
+                ", label='" + label + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
 }
