@@ -31,14 +31,15 @@ public class UserChangeInfo extends HttpServlet {
         //storePath将头像存入某处
         String storePath = "C:\\Users\\29424\\Desktop\\小组实验\\FruitShop\\web\\avatar\\";
         //
-        String filename = System.currentTimeMillis() + avatar.getSubmittedFileName();//保证图片名不重复
+        String filename = avatar.getSubmittedFileName();//保证图片名不重复
         storePath += filename;
         avatar.write(storePath);
 
 
+        String avatarname = "web/avatar/" + filename;
         user.setUserName(request.getParameter("userName"));
         user.setPhone(request.getParameter("phone"));
-        user.setAvatar(storePath);
+        user.setAvatar(avatarname);
 
         userService.changeInfo(user);
 
@@ -46,6 +47,9 @@ public class UserChangeInfo extends HttpServlet {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", true);
         jsonObject.put("msg", "修改用户信息成功");
+        jsonObject.put("user", user);
+
+        request.getSession().setAttribute("user", user);
 
         PrintWriter out =  response.getWriter();
         out.print(jsonObject);
