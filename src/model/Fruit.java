@@ -7,6 +7,7 @@ public class Fruit {
     private String fruitName;
     private double price;   //价格
     private int stock;  //库存
+    private int sales;  //销量
     //图片组
     private String cover;
     private String image1;
@@ -114,11 +115,20 @@ public class Fruit {
         this.images = images;
     }
 
-    public Fruit(int fruitId, String fruitName, double price, int stock, String cover, String image1, String image2, String image3, String image4, String[] images, String intro, Classify classify) {
+    public int getSales() {
+        return sales;
+    }
+
+    public void setSales(int sales) {
+        this.sales = sales;
+    }
+
+    public Fruit(int fruitId, String fruitName, double price, int stock, int sales, String cover, String image1, String image2, String image3, String image4, String[] images, String intro, Classify classify) {
         this.fruitId = fruitId;
         this.fruitName = fruitName;
         this.price = price;
         this.stock = stock;
+        this.sales = sales;
         this.cover = cover;
         this.image1 = image1;
         this.image2 = image2;
@@ -139,6 +149,7 @@ public class Fruit {
                 ", fruitName='" + fruitName + '\'' +
                 ", price=" + price +
                 ", stock=" + stock +
+                ", sales=" + sales +
                 ", cover='" + cover + '\'' +
                 ", image1='" + image1 + '\'' +
                 ", image2='" + image2 + '\'' +
