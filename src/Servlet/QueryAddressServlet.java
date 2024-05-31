@@ -28,9 +28,7 @@ public class QueryAddressServlet extends HttpServlet {
             List<Address> addresseslist = addressDao.selectAddressbyUserId(userId);
             JSONObject jsonObject = new JSONObject();
             JSONArray jsonArray = new JSONArray();
-            int i = 0;
             for(Address adrs: addresseslist){
-                jsonObject.put("index", i);
                 jsonObject.put("address", adrs);
                 jsonArray.add(jsonObject);
             }

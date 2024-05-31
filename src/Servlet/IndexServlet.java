@@ -24,32 +24,30 @@ public class IndexServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Fruit> hotList = fruitService.getHotFruit(1);
-        JSONObject jsonObject1 = new JSONObject();
+        JSONObject hotObject = new JSONObject();
         JSONArray hotArray = new JSONArray();
-        jsonObject1.put("code", "true");
-        jsonObject1.put("type", "hot");
-        for(Fruit f : hotList){
-            JSONObject object = new JSONObject();
-            object.put("fruit",f);
-            hotArray.add(object);
+        for(Fruit f: hotList){
+            hotObject.put("hotfruit", f);
+            hotArray.add(hotObject);
         }
-        jsonObject1.put("hotList", hotArray);
+        JSONObject returnObject1 = new JSONObject();
+        returnObject1.put("code", true);
+        returnObject1.put("hotList", hotArray);
 
         List<Fruit> newList = fruitService.getNewFruit(2);
-        JSONObject jsonObject2 = new JSONObject();
+        JSONObject newObject = new JSONObject();
         JSONArray newArray = new JSONArray();
-        jsonObject2.put("code", "true");
-        jsonObject2.put("type", "new");
-        for(Fruit f : newList){
-            JSONObject object = new JSONObject();
-            object.put("fruit",f);
-            newArray.add(f);
+        for(Fruit f: newList){
+            newObject.put("newfruit", f);
+            newArray.add(newObject);
         }
-        jsonObject2.put("newList", newList);
+        JSONObject returnObject2 = new JSONObject();
+        returnObject2.put("code", true);
+        returnObject2.put("newList", newArray);
 
         PrintWriter out = response.getWriter();
-        out.print(jsonObject1);
-        out.print(jsonObject2);
+        out.print(returnObject1);
+        out.print(returnObject2);
         out.flush();
         out.close();
     }
