@@ -11,6 +11,7 @@ public class Fruit {
     private String image2;
     private String image3;
     private String image4;
+    private String[] images = {image1, image2, image3, image4};
     private String intro;   //介绍
     private Classify classify;
 
