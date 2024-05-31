@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 public class Fruit {
     private int fruitId;
     private String fruitName;
@@ -122,7 +124,15 @@ public class Fruit {
         isNew = aNew;
     }
 
-    public Fruit(int fruitId, String fruitName, double price, int stock, String cover, String image1, String image2, String image3, String image4, String intro, Classify classify, boolean isHot, boolean isNew) {
+    public String[] getImages() {
+        return images;
+    }
+
+    public void setImages(String[] images) {
+        this.images = images;
+    }
+
+    public Fruit(int fruitId, String fruitName, double price, int stock, String cover, String image1, String image2, String image3, String image4, String[] images, String intro, Classify classify, boolean isHot, boolean isNew) {
         this.fruitId = fruitId;
         this.fruitName = fruitName;
         this.price = price;
@@ -132,6 +142,7 @@ public class Fruit {
         this.image2 = image2;
         this.image3 = image3;
         this.image4 = image4;
+        this.images = images;
         this.intro = intro;
         this.classify = classify;
         this.isHot = isHot;
@@ -153,6 +164,7 @@ public class Fruit {
                 ", image2='" + image2 + '\'' +
                 ", image3='" + image3 + '\'' +
                 ", image4='" + image4 + '\'' +
+                ", images=" + Arrays.toString(images) +
                 ", intro='" + intro + '\'' +
                 ", classify=" + classify +
                 ", isHot=" + isHot +
