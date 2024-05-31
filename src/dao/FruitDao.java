@@ -29,4 +29,10 @@ public class FruitDao {
         String sql = "select * from fruit where classifyId = ?";
         return runner.query(sql, new BeanListHandler<Fruit>(Fruit.class), classifyId);
     }
+
+    public List<Fruit> selectAllFruitList() throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from fruit";
+        return runner.query(sql, new BeanListHandler<Fruit>(Fruit.class));
+    }
 }

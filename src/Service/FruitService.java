@@ -33,5 +33,20 @@ public class FruitService {
         }
     }
 
+    public List<Fruit> getFruitListByClassifyId(int classifyId){
+        try {
+            return fruitDao.selectFruitListByClassifyId(classifyId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Fruit> getAllFruitList(){
+        try {
+            return fruitDao.selectAllFruitList();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }
