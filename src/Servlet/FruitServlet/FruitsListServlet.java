@@ -12,8 +12,8 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "GoodsListServlet", urlPatterns = "/Goods_List")
-public class GoodsListServlet extends HttpServlet {
+@WebServlet(name = "FruitsListServlet", urlPatterns = "/Fruits_List")
+public class FruitsListServlet extends HttpServlet {
     private FruitService fruitService = new FruitService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,6 +66,5 @@ public class GoodsListServlet extends HttpServlet {
             out.flush();
             out.close();
         }
-
     }
 }
