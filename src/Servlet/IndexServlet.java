@@ -24,13 +24,13 @@ public class IndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Fruit> hotList = fruitService.getHotFruit(1);
         JSONObject jsonObject1 = new JSONObject();
-        jsonObject1.put("code", "success");
+        jsonObject1.put("code", "true");
         jsonObject1.put("type", "hot");
         jsonObject1.put("hotList", hotList);
 
         List<Fruit> newList = fruitService.getNewFruit(2);
         JSONObject jsonObject2 = new JSONObject();
-        jsonObject2.put("code", "success");
+        jsonObject2.put("code", "true");
         jsonObject2.put("type", "new");
         jsonObject2.put("newList", newList);
 
