@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "IndexServlet", urlPatterns = "/IndexServlet")
+@WebServlet(name = "IndexServlet", urlPatterns = "/index")
 public class IndexServlet extends HttpServlet {
     private FruitService fruitService = new FruitService();
     @Override
