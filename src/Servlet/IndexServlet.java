@@ -27,27 +27,32 @@ public class IndexServlet extends HttpServlet {
         JSONObject hotObject = new JSONObject();
         JSONArray hotArray = new JSONArray();
         for(Fruit f: hotList){
-            hotObject.put("hotfruit", f);
+            hotObject.put("hotFruit", f);
             hotArray.add(hotObject);
         }
-        JSONObject returnObject1 = new JSONObject();
-        returnObject1.put("code", true);
-        returnObject1.put("hotList", hotArray);
+//        JSONObject returnObject1 = new JSONObject();
+//        returnObject1.put("code", true);
+//        returnObject1.put("hotList", hotArray);
 
         List<Fruit> newList = fruitService.getNewFruit(2);
         JSONObject newObject = new JSONObject();
         JSONArray newArray = new JSONArray();
         for(Fruit f: newList){
-            newObject.put("newfruit", f);
+            newObject.put("newFruit", f);
             newArray.add(newObject);
         }
-        JSONObject returnObject2 = new JSONObject();
-        returnObject2.put("code", true);
-        returnObject2.put("newList", newArray);
+//        JSONObject returnObject2 = new JSONObject();
+//        returnObject2.put("code", true);
+//        returnObject2.put("newList", newArray);
 
+        JSONObject returnObject = new JSONObject();
+        returnObject.put("code", true);
+        returnObject.put("hotList",hotArray);
+        returnObject.put("newList", newArray);
         PrintWriter out = response.getWriter();
-        out.print(returnObject1);
-        out.print(returnObject2);
+//        out.print(returnObject1);
+//        out.print(returnObject2);
+        out.print(returnObject);
         out.flush();
         out.close();
     }
