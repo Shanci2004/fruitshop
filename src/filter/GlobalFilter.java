@@ -38,22 +38,8 @@ public class GlobalFilter implements Filter {
         /* 星号表示所有的异域请求都可以接受， */
         response.setHeader("Access-Control-Allow-Methods", "GET,POST");
 
-        if (request.getRequestURI().equals("/fruit/user_login")){
-            filterChain.doFilter(request, response);
-            return;
-        }else if(request.getRequestURI().equals("/fruit/user_register")){
-            filterChain.doFilter(request, response);
-            return;
-        }else if(request.getSession().getAttribute("user") == null){
-            JSONObject res = new JSONObject();
-            res.put("code", false);
-            res.put("status", 200);
-            res.put("msg", "访问失败");
-            response.getWriter().print(res);
-        }
-        else{
-            filterChain.doFilter(servletRequest, response);
-        }
+        filterChain.doFilter(servletRequest, response);
+
     }
 
     @Override
