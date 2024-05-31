@@ -1,6 +1,8 @@
 package dao;
 
+import model.Fruit;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 import utiils.DataSourceUtils;
 
@@ -9,9 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 public class FruitDao {
-    public List<Map<String, Object>> getFruitsList(int recommendType) throws SQLException {
+    public List<Fruit> getFruitsList(int recommendType) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "select f.fruitId, f.fruitName, f.price, f.cover, c.classifyName from fruit f, recommend r, classify c where r.type = ? and f.classifyId = c.classifyId and f.fruitId = r.fruitId";
-        return runner.query(sql, new MapListHandler(), recommendType);
+        String sql = "select * from fruit f, recommend r where r.type = ? and f.fruitId = r.fruitId";
+        return runner.query(sql, new BeanListHandler<Fruit>(Fruit.class), recommendType);
     }
 }
