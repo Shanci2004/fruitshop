@@ -25,4 +25,12 @@ public class FruitService {
         }
     }
 
+    public Fruit getFruitInfo(int fruitId){
+        try {
+            return fruitDao.SelectFruitByFruitId(fruitId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

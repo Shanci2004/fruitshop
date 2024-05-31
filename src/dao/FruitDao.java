@@ -2,6 +2,7 @@ package dao;
 
 import model.Fruit;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 import utiils.DataSourceUtils;
@@ -15,5 +16,11 @@ public class FruitDao {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from fruit f, recommend r where r.type = ? and f.fruitId = r.fruitId";
         return runner.query(sql, new BeanListHandler<Fruit>(Fruit.class), recommendType);
+    }
+
+    public Fruit SelectFruitByFruitId(int fruitId) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from fruit where fruitId = ?";
+        return runner.query(sql, new BeanHandler<Fruit>(Fruit.class), fruitId);
     }
 }

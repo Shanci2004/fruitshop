@@ -17,8 +17,6 @@ public class Fruit {
     private String intro;   //介绍
     private Classify classify;
 
-    private boolean isHot;
-    private boolean isNew;
 
     public int getFruitId() {
         return fruitId;
@@ -108,22 +106,6 @@ public class Fruit {
         this.classify = classify;
     }
 
-    public boolean isHot() {
-        return isHot;
-    }
-
-    public void setHot(boolean hot) {
-        isHot = hot;
-    }
-
-    public boolean isNew() {
-        return isNew;
-    }
-
-    public void setNew(boolean aNew) {
-        isNew = aNew;
-    }
-
     public String[] getImages() {
         return images;
     }
@@ -132,7 +114,7 @@ public class Fruit {
         this.images = images;
     }
 
-    public Fruit(int fruitId, String fruitName, double price, int stock, String cover, String image1, String image2, String image3, String image4, String[] images, String intro, Classify classify, boolean isHot, boolean isNew) {
+    public Fruit(int fruitId, String fruitName, double price, int stock, String cover, String image1, String image2, String image3, String image4, String[] images, String intro, Classify classify) {
         this.fruitId = fruitId;
         this.fruitName = fruitName;
         this.price = price;
@@ -145,8 +127,6 @@ public class Fruit {
         this.images = images;
         this.intro = intro;
         this.classify = classify;
-        this.isHot = isHot;
-        this.isNew = isNew;
     }
 
     public Fruit() {
@@ -167,8 +147,6 @@ public class Fruit {
                 ", images=" + Arrays.toString(images) +
                 ", intro='" + intro + '\'' +
                 ", classify=" + classify +
-                ", isHot=" + isHot +
-                ", isNew=" + isNew +
                 '}';
     }
 }
