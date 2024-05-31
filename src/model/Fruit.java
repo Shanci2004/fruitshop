@@ -1,5 +1,8 @@
 package model;
 
+import dao.ClassifyDao;
+
+import java.sql.SQLException;
 import java.util.Arrays;
 
 public class Fruit {
@@ -17,7 +20,7 @@ public class Fruit {
     private String[] images = {image1, image2, image3, image4};
     private String intro;   //介绍
     private int classifyId;
-
+    private Classify classify;
 
     public int getFruitId() {
         return fruitId;
@@ -123,7 +126,19 @@ public class Fruit {
         this.sales = sales;
     }
 
-    public Fruit(int fruitId, String fruitName, double price, int stock, int sales, String cover, String image1, String image2, String image3, String image4, String[] images, String intro, int classifyId) {
+    public Classify getClassify() {
+        return classify;
+    }
+
+    public void setClassify() {
+        try {
+            this.classify = ClassifyDao.getClassify(classifyId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Fruit(int fruitId, String fruitName, double price, int stock, int sales, String cover, String image1, String image2, String image3, String image4, String[] images, String intro, int classifyId, Classify classify) {
         this.fruitId = fruitId;
         this.fruitName = fruitName;
         this.price = price;
@@ -137,6 +152,7 @@ public class Fruit {
         this.images = images;
         this.intro = intro;
         this.classifyId = classifyId;
+        this.classify = classify;
     }
 
     public Fruit() {
@@ -158,6 +174,7 @@ public class Fruit {
                 ", images=" + Arrays.toString(images) +
                 ", intro='" + intro + '\'' +
                 ", classifyId=" + classifyId +
+                ", classify=" + classify +
                 '}';
     }
 }

@@ -23,6 +23,7 @@ public class QueryFruitServlet extends HttpServlet {
         int fruitId = Integer.parseInt(request.getParameter("fruitId"));
 
         Fruit fruit = fruitService.getFruitInfo(fruitId);
+        fruit.setClassify();
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", true);

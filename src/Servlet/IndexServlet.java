@@ -27,6 +27,7 @@ public class IndexServlet extends HttpServlet {
         JSONObject hotObject = new JSONObject();
         JSONArray hotArray = new JSONArray();
         for(Fruit f: hotList){
+            f.setClassify();
             hotObject.put("hotFruit", f);
             hotArray.add(hotObject);
         }
@@ -38,6 +39,7 @@ public class IndexServlet extends HttpServlet {
         JSONObject newObject = new JSONObject();
         JSONArray newArray = new JSONArray();
         for(Fruit f: newList){
+            f.setClassify();
             newObject.put("newFruit", f);
             newArray.add(newObject);
         }
