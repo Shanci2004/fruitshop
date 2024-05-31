@@ -1,7 +1,8 @@
-package Servlet;
+package Servlet.UserServlet;
 
-import Service.AddressService;
-import model.Address;
+import Service.UserService;
+import model.User;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -12,41 +13,40 @@ import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "AddAddressServlet", urlPatterns = "/Add_Address")
-public class AddAddressServlet extends HttpServlet {
-    private AddressService addressService = new AddressService();
+@WebServlet(name = "UserRegisterServlet", urlPatterns = "/user_register")
+public class UserRegisterServlet extends HttpServlet {
+    private UserService uService = new UserService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+        doPost(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Address address = new Address();
+        User user = new User();
         try {
-            BeanUtils.copyProperties(address, request.getParameterMap());
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            address.setUserId(userId);
-            addressService.addAddress(address);
+            BeanUtils.copyProperties(user, request.getParameterMap());
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+        if(uService.register(user)){
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("code",true);
-            jsonObject.put("msg","添加地址成功！");
-            jsonObject.put("address",address);
-
+            jsonObject.put("msg","注册成功");
             PrintWriter out = response.getWriter();
             out.print(jsonObject);
             out.flush();
             out.close();
-        } catch (Exception e) {
-            JSONObject jsonObject = new JSONObject();
+        }else{
+            JSONObject jsonObject= new JSONObject();
             jsonObject.put("code",false);
-            jsonObject.put("msg","添加地址出错！");
-
+            jsonObject.put("msg","注册失败");
             PrintWriter out = response.getWriter();
             out.print(jsonObject);
             out.flush();
             out.close();
         }
-
     }
 }

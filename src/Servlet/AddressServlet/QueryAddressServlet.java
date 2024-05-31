@@ -1,4 +1,4 @@
-package Servlet;
+package Servlet.AddressServlet;
 
 import dao.AddressDao;
 import model.Address;

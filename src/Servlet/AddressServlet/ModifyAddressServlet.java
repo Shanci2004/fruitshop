@@ -1,4 +1,4 @@
-package Servlet;
+package Servlet.AddressServlet;
 
 import Service.AddressService;
 import model.Address;
