@@ -27,10 +27,11 @@ public class FruitService {
 
     public Fruit getFruitInfo(int fruitId){
         try {
-            return fruitDao.SelectFruitByFruitId(fruitId);
+            return fruitDao.selectFruitByFruitId(fruitId);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
 
 }

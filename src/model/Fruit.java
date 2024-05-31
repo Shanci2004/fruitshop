@@ -16,7 +16,7 @@ public class Fruit {
     private String image4;
     private String[] images = {image1, image2, image3, image4};
     private String intro;   //介绍
-    private Classify classify;
+    private int classifyId;
 
 
     public int getFruitId() {
@@ -99,12 +99,12 @@ public class Fruit {
         this.intro = intro;
     }
 
-    public Classify getClassify() {
-        return classify;
+    public int getClassifyId() {
+        return classifyId;
     }
 
-    public void setClassify(Classify classify) {
-        this.classify = classify;
+    public void setClassifyId(int classifyId) {
+        this.classifyId = classifyId;
     }
 
     public String[] getImages() {
@@ -123,7 +123,7 @@ public class Fruit {
         this.sales = sales;
     }
 
-    public Fruit(int fruitId, String fruitName, double price, int stock, int sales, String cover, String image1, String image2, String image3, String image4, String[] images, String intro, Classify classify) {
+    public Fruit(int fruitId, String fruitName, double price, int stock, int sales, String cover, String image1, String image2, String image3, String image4, String[] images, String intro, int classifyId) {
         this.fruitId = fruitId;
         this.fruitName = fruitName;
         this.price = price;
@@ -136,7 +136,7 @@ public class Fruit {
         this.image4 = image4;
         this.images = images;
         this.intro = intro;
-        this.classify = classify;
+        this.classifyId = classifyId;
     }
 
     public Fruit() {
@@ -157,7 +157,7 @@ public class Fruit {
                 ", image4='" + image4 + '\'' +
                 ", images=" + Arrays.toString(images) +
                 ", intro='" + intro + '\'' +
-                ", classify=" + classify +
+                ", classifyId=" + classifyId +
                 '}';
     }
 }

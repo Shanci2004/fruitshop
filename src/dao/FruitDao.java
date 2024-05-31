@@ -18,9 +18,15 @@ public class FruitDao {
         return runner.query(sql, new BeanListHandler<Fruit>(Fruit.class), recommendType);
     }
 
-    public Fruit SelectFruitByFruitId(int fruitId) throws SQLException {
+    public Fruit selectFruitByFruitId(int fruitId) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from fruit where fruitId = ?";
         return runner.query(sql, new BeanHandler<Fruit>(Fruit.class), fruitId);
+    }
+
+    public List<Fruit> selectFruitListByClassifyId(int classifyId) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from fruit where classifyId = ?";
+        return runner.query(sql, new BeanListHandler<Fruit>(Fruit.class), classifyId);
     }
 }
