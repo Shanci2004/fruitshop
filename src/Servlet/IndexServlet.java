@@ -2,6 +2,7 @@ package Servlet;
 
 import Service.FruitService;
 import model.Fruit;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import javax.servlet.*;
@@ -24,14 +25,22 @@ public class IndexServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Fruit> hotList = fruitService.getHotFruit(1);
         JSONObject jsonObject1 = new JSONObject();
+        JSONArray hotArray = new JSONArray();
         jsonObject1.put("code", "true");
         jsonObject1.put("type", "hot");
-        jsonObject1.put("hotList", hotList);
+        for(Fruit f : hotList){
+            hotArray.add(f);
+        }
+        jsonObject1.put("hotList", hotArray);
 
         List<Fruit> newList = fruitService.getNewFruit(2);
         JSONObject jsonObject2 = new JSONObject();
+        JSONArray newArray = new JSONArray();
         jsonObject2.put("code", "true");
         jsonObject2.put("type", "new");
+        for(Fruit f : newList){
+            newArray.add(f);
+        }
         jsonObject2.put("newList", newList);
 
         PrintWriter out = response.getWriter();
