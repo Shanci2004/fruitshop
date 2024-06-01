@@ -5,6 +5,7 @@ import model.CartDetail;
 import model.ShopCart;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class CartService {
     private CartDao cartDao = new CartDao();
@@ -45,5 +46,11 @@ public class CartService {
         }
     }
 
-    public
+    public List<CartDetail> getCartDetailList(int cartId){
+        try {
+            return cartDao.selectCartDetail(cartId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
