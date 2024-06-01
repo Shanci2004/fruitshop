@@ -31,7 +31,7 @@ public class CartDao {
 
     public List<CartDetail> selectCartDetail(int cartId) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "select * from shopcart where cartId = ?";
+        String sql = "select * from cartDetail where cartId = ?";
         return runner.query(sql, new BeanListHandler<CartDetail>(CartDetail.class), cartId);
     }
 }
