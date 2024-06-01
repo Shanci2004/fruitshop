@@ -49,4 +49,12 @@ public class FruitService {
         }
     }
 
+    public List<Fruit> searchFruit(String keyword){
+        try {
+            return fruitDao.selectFruitByKeyword(keyword);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
