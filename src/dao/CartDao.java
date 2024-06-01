@@ -25,13 +25,13 @@ public class CartDao {
 
     public void insertCartDetail(CartDetail cartDetail) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "insert into cartDetail(cartId, fruitId, quantity, subtotal) values(?, ?, ?, ?)";
+        String sql = "insert into cartdetail(cartId, fruitId, quantity, subtotal) values(?, ?, ?, ?)";
         runner.update(sql, cartDetail.getCartId(), cartDetail.getFruitId(), cartDetail.getQuantity(), cartDetail.getSubtotal());
     }
 
     public List<CartDetail> selectCartDetail(int cartId) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "select * from cartDetail where cartId = ?";
+        String sql = "select * from cartdetail where cartId = ?";
         return runner.query(sql, new BeanListHandler<CartDetail>(CartDetail.class), cartId);
     }
 }
