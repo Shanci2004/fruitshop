@@ -38,7 +38,7 @@ public class FruitDao {
 
     public List<Fruit> selectFruitByKeyword(String keyword) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "select * from fruit where name like ?";
+        String sql = "select * from fruit where fruitName like ?";
         return runner.query(sql, new BeanListHandler<Fruit>(Fruit.class), "%"+keyword+"%" );
     }
 
