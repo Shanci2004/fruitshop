@@ -34,15 +34,17 @@ public class CartAddFruitServlet extends HttpServlet {
         if(!cartService.haveCart(user.getUserId())){
             cartService.createCart(user.getUserId());
         }
-
         ShopCart shopCart = cartService.getCart(user.getUserId());
 
-        CartDetail cartDetail = new CartDetail(shopCart.getCartId(), fruitId, quantity, subtotal);
-        cartService.addFruitIntoCart(cartDetail);
+        if(cartService.cartHaveFruit(shopCart.getCartId(), fruitId)){
+            cartService.changeFruitQuantity(shopCart.getCartId(), fruitId, quantity);
+        }else{
+            CartDetail cartDetail = new CartDetail(shopCart.getCartId(), fruitId, quantity, subtotal);
+            cartService.addFruitIntoCart(cartDetail);
+        }
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", true);
-        jsonObject.put("cartDetail", cartDetail);
         jsonObject.put("msg", "添加商品至购物车成功！");
 
         PrintWriter out = response.getWriter();

@@ -22,6 +22,18 @@ public class CartService {
         }
     }
 
+    public boolean cartHaveFruit(int cartId, int fruitId){
+        try {
+            if(cartDao.cartGetFruit(cartId, fruitId) != null){
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public ShopCart getCart(int userId){
         try {
             return cartDao.getShopCart(userId);

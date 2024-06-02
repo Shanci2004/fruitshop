@@ -17,6 +17,12 @@ public class CartDao {
         return runner.query(sql, new BeanHandler<ShopCart>(ShopCart.class), userId);
     }
 
+    public CartDetail cartGetFruit(int cartId, int fruitId) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from cartdetail where cartId = ? and fruitId = ?";
+        return runner.query(sql, new BeanHandler<CartDetail>(CartDetail.class), cartId, fruitId);
+    }
+
     public void insertShopCart(int userId) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "insert into shopcart(userId) values(?)";
