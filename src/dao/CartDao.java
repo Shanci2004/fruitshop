@@ -5,6 +5,7 @@ import model.ShopCart;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 import utiils.DataSourceUtils;
 
 import java.sql.SQLException;
@@ -15,6 +16,12 @@ public class CartDao {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from shopcart where userId = ?";
         return runner.query(sql, new BeanHandler<ShopCart>(ShopCart.class), userId);
+    }
+
+    public int getCartCount(int cartId) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select count(*) from cartdetail where cartId = ?";
+        return runner.query(sql, new ScalarHandler<Long>(), cartId).intValue();
     }
 
     public CartDetail cartGetFruit(int cartId, int fruitId) throws SQLException {
