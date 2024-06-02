@@ -54,8 +54,12 @@ public class CartService {
         }
     }
 
-    public void changeFruitQuantity(){
-
+    public void changeFruitQuantity(int cartId, int fruitId, int quantity){
+        try {
+            cartDao.updateFruitQuantity(cartId, fruitId, quantity);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void deleteFruitFromCart(int cartId, int fruitId){
