@@ -53,4 +53,16 @@ public class CartService {
             throw new RuntimeException(e);
         }
     }
+
+    public void changeFruitQuantity(){
+
+    }
+
+    public void deleteFruitFromCart(int cartId, int fruitId){
+        try {
+            cartDao.deleteCartDetail(cartId, fruitId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

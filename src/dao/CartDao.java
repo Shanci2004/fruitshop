@@ -34,4 +34,14 @@ public class CartDao {
         String sql = "select * from cartdetail where cartId = ?";
         return runner.query(sql, new BeanListHandler<CartDetail>(CartDetail.class), cartId);
     }
+
+    public void updateFruitQuantity(){
+
+    }
+
+    public void deleteCartDetail(int cartId, int fruitId) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "delete from cartdetail where cartId = ? and fruitId = ?";
+        runner.update(sql, cartId, fruitId);
+    }
 }

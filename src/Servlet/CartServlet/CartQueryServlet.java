@@ -32,6 +32,7 @@ public class CartQueryServlet extends HttpServlet {
             cartService.createCart(user.getUserId());
         }
         ShopCart cart = cartService.getCart(user.getUserId());
+        request.getSession().setAttribute("cart", cart);
 
         List<CartDetail> list = cartService.getCartDetailList(cart.getCartId());
 
