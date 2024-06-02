@@ -35,6 +35,7 @@ public class CartChangeQuantityServlet extends HttpServlet {
         jsonObject.put("msg", "更改商品数量成功");
 
         PrintWriter out = response.getWriter();
+        out.print(jsonObject);
         out.flush();
         out.close();
     }
