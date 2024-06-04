@@ -17,7 +17,7 @@ public class Fruit {
     private String image2;
     private String image3;
     private String image4;
-    private String[] images;
+    private String[] images = new String[4];
     private String intro;   //介绍
     private int classifyId;
     private Classify classify;
@@ -115,7 +115,10 @@ public class Fruit {
     }
 
     public void setImages() {
-        this.images = new String[]{image1, image2, image3, image4};
+        this.images[0] = image1;
+        this.images[1] = image2;
+        this.images[2] = image3;
+        this.images[3] = image4;
     }
 
     public int getSales() {
