@@ -31,6 +31,7 @@ public class FruitsSearchServlet extends HttpServlet {
             JSONArray jsonArray = new JSONArray();
             for(Fruit f: list){
                 f.setClassify();
+                f.setImages();
                 jsonObject.put("fruit", f);
                 jsonArray.add(jsonObject);
             }

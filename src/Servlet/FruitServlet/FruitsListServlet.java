@@ -30,6 +30,7 @@ public class FruitsListServlet extends HttpServlet {
             JSONArray jsonArray = new JSONArray();
             for(Fruit f: list){
                 f.setClassify();
+                f.setImages();
                 jsonObject.put("fruit", f);
                 jsonArray.add(jsonObject);
             }
@@ -51,6 +52,7 @@ public class FruitsListServlet extends HttpServlet {
             String classifyName = null;
             for(Fruit f: list){
                 f.setClassify();
+                f.setImages();
                 classifyName = f.getClassify().getClassifyName();
                 jsonObject.put("fruit", f);
                 jsonArray.add(jsonObject);

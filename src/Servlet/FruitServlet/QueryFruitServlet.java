@@ -24,6 +24,7 @@ public class QueryFruitServlet extends HttpServlet {
 
         Fruit fruit = fruitService.getFruitInfo(fruitId);
         fruit.setClassify();
+        fruit.setImages();
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", true);
