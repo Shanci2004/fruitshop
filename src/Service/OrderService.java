@@ -61,4 +61,16 @@ public class OrderService {
             throw new RuntimeException(e);
         }
     }
+
+    public boolean deleteOrder(String orderId){
+        try {
+            if(orderDao.deleteOrder(orderId)){
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

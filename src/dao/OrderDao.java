@@ -31,5 +31,11 @@ public class OrderDao {
         String sql = "select * from orderitems where orderId = ?";
         return runner.query(sql, new BeanListHandler<OrderItems>(OrderItems.class), orderId);
     }
+    public boolean deleteOrder(String orderId) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "delete from `order` where orderId = ?";
+        runner.update(sql, orderId);
+        return true;
+    }
 
 }
