@@ -1,5 +1,6 @@
 package Service;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import dao.CartDao;
 import dao.FruitDao;
 import dao.OrderDao;
@@ -62,6 +63,14 @@ public class OrderService {
         }
     }
 
+    public List<Order> getAllOrderList(){
+        try {
+            return orderDao.selectAllOrderList();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public boolean deleteOrder(String orderId){
         try {
             if(orderDao.deleteOrder(orderId)){
@@ -69,6 +78,14 @@ public class OrderService {
             }else {
                 return false;
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateStatus(String orderId, int status){
+        try {
+            orderDao.updateStatus(orderId, status);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -23,11 +23,9 @@ public class AdminUserListServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<User> list = userService.getUserList();
-        JSONObject jsonObject = new JSONObject();
         JSONArray jsonArray = new JSONArray();
         for(User user: list){
-            jsonObject.put("user", user);
-            jsonArray.add(jsonObject);
+            jsonArray.add(user);
         }
 
         JSONObject returnObject = new JSONObject();

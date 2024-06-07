@@ -43,8 +43,6 @@ public class CartQueryServlet extends HttpServlet {
         for(CartDetail cd: list){
             jsonObject.put("cartDetail", cd);
             f = fruitService.getFruitInfo(cd.getFruitId());
-            f.setClassify();
-            f.setImages();
             jsonObject.put("fruit", f);
             jsonArray.add(jsonObject);
         }

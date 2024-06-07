@@ -27,7 +27,10 @@ public class FruitService {
 
     public Fruit getFruitInfo(int fruitId){
         try {
-            return fruitDao.selectFruitByFruitId(fruitId);
+            Fruit fruit = fruitDao.selectFruitByFruitId(fruitId);
+            fruit.setClassify();
+            fruit.setImages();
+            return fruit;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

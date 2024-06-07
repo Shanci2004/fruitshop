@@ -31,11 +31,22 @@ public class OrderDao {
         String sql = "select * from orderitems where orderId = ?";
         return runner.query(sql, new BeanListHandler<OrderItems>(OrderItems.class), orderId);
     }
+    public List<Order> selectAllOrderList() throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from `order`";
+        return runner.query(sql, new BeanListHandler<Order>(Order.class));
+    }
     public boolean deleteOrder(String orderId) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "delete from `order` where orderId = ?";
         runner.update(sql, orderId);
         return true;
     }
+    public void updateStatus(String orderId, int status) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "update `order` set status = ? where orderId = ?";
+        runner.update(sql, status, orderId);
+    }
+
 
 }

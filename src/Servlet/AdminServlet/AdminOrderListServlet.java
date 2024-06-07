@@ -1,8 +1,9 @@
-package Servlet.OrderServlet;
+package Servlet.AdminServlet;
 
 import Service.AddressService;
 import Service.FruitService;
 import Service.OrderService;
+import Service.UserService;
 import model.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -14,11 +15,12 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "OrderListServlet", urlPatterns = "/Order_List")
-public class OrderListServlet extends HttpServlet {
+@WebServlet(name = "AdminOrderListServlet", urlPatterns = "/Admin_OrderList")
+public class AdminOrderListServlet extends HttpServlet {
     private OrderService orderService = new OrderService();
-    private FruitService fruitService = new FruitService();
+    private UserService userService = new UserService();
     private AddressService addressService = new AddressService();
+    private FruitService fruitService = new FruitService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -26,29 +28,25 @@ public class OrderListServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        List<Order> orderList = orderService.getOrderList(user.getUserId());
-        JSONObject orderObject = new JSONObject();
+        List<Order> orderList = orderService.getAllOrderList();
         JSONArray orderArray = new JSONArray();
         for(Order order: orderList){
-            List<OrderItems> itemsList = orderService.getOrderItems(order.getOrderId());
-            JSONObject itemsObject = new JSONObject();
+            User user = userService.getUserById(order.getUserId());
             Address address = addressService.getAddressByAddressId(order.getAddressId());
-            orderObject.put("order", order);
-            orderObject.put("user", user);
-            orderObject.put("address", address);
-            for(int i = 0; i < itemsList.size(); i++){
-                Fruit fruit = fruitService.getFruitInfo(itemsList.get(i).getFruitId());
-                itemsObject.put("orderitems", itemsList.get(i));
-                itemsObject.put("fruit", fruit);
-                orderObject.put("items", itemsObject);
-                orderArray.add(orderObject);
+            List<OrderItems> orderItems = orderService.getOrderItems(order.getOrderId());
+            orderArray.add(order);
+            orderArray.add(user);
+            orderArray.add(address);
+            for(int i = 0; i < orderItems.size(); i++){
+                Fruit fruit = fruitService.getFruitInfo(orderItems.get(i).getFruitId());
+                orderArray.add(orderItems.get(i));
+                orderArray.add(fruit);
             }
         }
 
         JSONObject returnObject = new JSONObject();
         returnObject.put("code", true);
-        returnObject.put("msg", "查询订单列表成功！");
+        returnObject.put("msg", "查询订单列表成功!");
         returnObject.put("orderList", orderArray);
 
         PrintWriter out = response.getWriter();
