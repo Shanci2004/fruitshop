@@ -40,6 +40,8 @@ public class OrderListServlet extends HttpServlet {
             orderObject.put("address", address);
             for(int i = 0; i < itemsList.size(); i++){
                 Fruit fruit = fruitService.getFruitInfo(itemsList.get(i).getFruitId());
+                fruit.setClassify();
+                fruit.setImages();
                 itemsObject.put("orderitems", itemsList.get(i));
                 itemsObject.put("fruit", fruit);
                 orderObject.put("items", itemsObject);
