@@ -26,5 +26,7 @@ public class OrderCreateInCartServlet extends HttpServlet {
         int status = 2;
         int paytype = Integer.parseInt(request.getParameter("paytype"));
 
+
+
     }
 }

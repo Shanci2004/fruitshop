@@ -1,6 +1,7 @@
 package model;
 
 public class CartDetail {
+    private int detailId;
     private int cartId;
     private int fruitId;
     private int quantity;
@@ -38,7 +39,16 @@ public class CartDetail {
         this.subtotal = subtotal;
     }
 
-    public CartDetail(int cartId, int fruitId, int quantity, double subtotal) {
+    public int getDetailId() {
+        return detailId;
+    }
+
+    public void setDetailId(int detailId) {
+        this.detailId = detailId;
+    }
+
+    public CartDetail(int detailId, int cartId, int fruitId, int quantity, double subtotal) {
+        this.detailId = detailId;
         this.cartId = cartId;
         this.fruitId = fruitId;
         this.quantity = quantity;
@@ -51,7 +61,8 @@ public class CartDetail {
     @Override
     public String toString() {
         return "CartDetail{" +
-                "cartId=" + cartId +
+                "detailId=" + detailId +
+                ", cartId=" + cartId +
                 ", fruitId=" + fruitId +
                 ", quantity=" + quantity +
                 ", subtotal=" + subtotal +
