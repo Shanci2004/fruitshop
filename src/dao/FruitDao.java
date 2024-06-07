@@ -57,7 +57,7 @@ public class FruitDao {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "update fruit set stock = ?, sales = ? where fruitId = ?";
         String sql1 = "select * from fruit where fruitId = ?";
-        Fruit fruit = runner.query(sql, new BeanHandler<Fruit>(Fruit.class), fruitId);
+        Fruit fruit = runner.query(sql1, new BeanHandler<Fruit>(Fruit.class), fruitId);
         if(fruit.getStock()-quantity >= 0){
             runner.update(sql, fruit.getStock()-quantity, fruit.getSales()+quantity);
             return true;
