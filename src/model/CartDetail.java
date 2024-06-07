@@ -55,6 +55,13 @@ public class CartDetail {
         this.subtotal = subtotal;
     }
 
+    public CartDetail(int cartId, int fruitId, int quantity, double subtotal) {
+        this.cartId = cartId;
+        this.fruitId = fruitId;
+        this.quantity = quantity;
+        this.subtotal = subtotal;
+    }
+
     public CartDetail() {
     }
 
