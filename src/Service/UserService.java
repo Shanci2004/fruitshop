@@ -4,6 +4,7 @@ import dao.UserDao;
 import model.User;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserService {
     private UserDao uDao = new UserDao();
@@ -56,6 +57,34 @@ public class UserService {
     public void changeInfo(User user){
         try {
             uDao.updateInfo(user);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //获取用户列表
+    public List<User> getUserList(){
+        try {
+            return uDao.selectUserList();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //获取用户
+    public User getUserById(int userId){
+        try {
+            return uDao.selectUserById(userId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //删除用户
+    public boolean removeUser(int userId){
+        try {
+            if(uDao.deleteUserById(userId)){
+                return true;
+            }else {
+                return false;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
