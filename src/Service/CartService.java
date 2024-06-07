@@ -89,4 +89,12 @@ public class CartService {
             throw new RuntimeException(e);
         }
     }
+
+    public CartDetail getCartDetailById(int detailId){
+        try {
+            return cartDao.selectDetailById(detailId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

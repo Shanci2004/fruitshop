@@ -36,7 +36,7 @@ public class FruitBuyServlet extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         double subtotal = Double.parseDouble(request.getParameter("subtotal"));
         double total = subtotal;    //直接购买，只有一种商品
-        String orderId = OrderIdUtils.createOrderId(date, user, fruitId);
+        String orderId = OrderIdUtils.createOrderId(date, user);
         Order order = new Order(orderId, user.getUserId(), addressId, orderDate, status, paytype, total);
         OrderItems orderItems = new OrderItems(orderId, fruitId, quantity, subtotal);
         orderService.buyFruit(order, orderItems);

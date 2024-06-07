@@ -20,7 +20,14 @@ public class OrderService {
     }
 
     public void buyFruitInCart(Order order, OrderItems[] orderItems){
-
+        try {
+            orderDao.insertOrder(order);
+            for(OrderItems oi: orderItems){
+                orderDao.insertOrderItems(oi);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<Order> getOrderList(int userId){
