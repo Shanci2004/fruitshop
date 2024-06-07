@@ -23,7 +23,7 @@ public class OrderDao {
     }
     public List<Order> selectOrderList(int userId) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "select * from order where userId = ?";
+        String sql = "select * from `order` where userId = ?";
         return runner.query(sql, new BeanListHandler<Order>(Order.class), userId);
     }
     public List<OrderItems> selectOrderItems(String orderId) throws SQLException {
