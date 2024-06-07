@@ -51,10 +51,10 @@ public class OrderListServlet extends HttpServlet {
         JSONObject returnObject = new JSONObject();
         returnObject.put("code", true);
         returnObject.put("msg", "查询订单列表成功！");
+        returnObject.put("orderList", orderArray);
 
         PrintWriter out = response.getWriter();
         out.print(returnObject);
-        out.print(orderArray);
         out.flush();
         out.close();
     }
