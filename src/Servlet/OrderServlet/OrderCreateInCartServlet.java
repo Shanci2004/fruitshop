@@ -34,7 +34,7 @@ public class OrderCreateInCartServlet extends HttpServlet {
         Date date = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String orderDate = ft.format(date);
-        int status = 2;
+        int status = 4;
         int paytype = Integer.parseInt(request.getParameter("paytype"));
         String orderId = OrderIdUtils.createOrderId(date, user);
 

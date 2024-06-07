@@ -6,7 +6,7 @@ public class Order {
     private int userId;
     private int addressId;
     private String orderDate;
-    private int status;//1未付款/2已付款/3已发货/4已确认收货
+    private int status;//1未付款/2已付款/3已发货/4已完成
     private int paytype;//1在线/2微信/3支付宝/4货到支付
     private double total;
 

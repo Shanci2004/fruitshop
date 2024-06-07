@@ -30,7 +30,7 @@ public class FruitBuyServlet extends HttpServlet {
         Date date = new Date();
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String orderDate = ft.format(date);
-        int status = 2;
+        int status = 4;
         int paytype = Integer.parseInt(request.getParameter("paytype"));
         int fruitId = Integer.parseInt(request.getParameter("fruitId"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
