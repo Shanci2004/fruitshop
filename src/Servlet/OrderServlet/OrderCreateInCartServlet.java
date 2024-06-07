@@ -55,14 +55,18 @@ public class OrderCreateInCartServlet extends HttpServlet {
 
         Order order = new Order(orderId, user.getUserId(), addressId, orderDate, status, paytype, total);
 
-        orderService.buyFruitInCart(order, orderItems);
-        for(int i = 0; i < detailIds.length; i++){
-            cartService.removeCartDetail(detailIds[i]);
-        }
-
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("code", true);
-        jsonObject.put("msg", "购买成功！");
+        if(orderService.buyFruitInCart(order, orderItems)){
+            for(int i = 0; i < detailIds.length; i++){
+                cartService.removeCartDetail(detailIds[i]);
+            }
+
+            jsonObject.put("code", true);
+            jsonObject.put("msg", "购买成功！");
+        }else {
+            jsonObject.put("code", false);
+            jsonObject.put("msg", "购买失败！");
+        }
 
         PrintWriter out = response.getWriter();
         out.print(jsonObject);

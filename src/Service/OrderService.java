@@ -13,23 +13,34 @@ public class OrderService {
     private OrderDao orderDao = new OrderDao();
     private FruitService fruitService = new FruitService();
 
-    public void buyFruit(Order order, OrderItems orderItems){
+    public boolean buyFruit(Order order, OrderItems orderItems){
         try {
-            orderDao.insertOrder(order);
-            orderDao.insertOrderItems(orderItems);
-            fruitService.lessenFruit(orderItems.getFruitId(), orderItems.getQuantity());
+            if(fruitService.lessenFruit(orderItems.getFruitId(), orderItems.getQuantity())){
+                orderDao.insertOrder(order);
+                orderDao.insertOrderItems(orderItems);
+                return true;
+            }else {
+                return false;
+            }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void buyFruitInCart(Order order, OrderItems[] orderItems){
+    public boolean buyFruitInCart(Order order, OrderItems[] orderItems){
         try {
+            for(OrderItems oi : orderItems){
+                if(!fruitService.fruitEnough(oi.getFruitId(), oi.getQuantity())){
+                    return false;
+                }
+            }
             orderDao.insertOrder(order);
             for(OrderItems oi: orderItems){
                 orderDao.insertOrderItems(oi);
                 fruitService.lessenFruit(oi.getFruitId(), oi.getQuantity());
             }
+            return true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

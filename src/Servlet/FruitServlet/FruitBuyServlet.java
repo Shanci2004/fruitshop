@@ -39,11 +39,15 @@ public class FruitBuyServlet extends HttpServlet {
         String orderId = OrderIdUtils.createOrderId(date, user);
         Order order = new Order(orderId, user.getUserId(), addressId, orderDate, status, paytype, total);
         OrderItems orderItems = new OrderItems(orderId, fruitId, quantity, subtotal);
-        orderService.buyFruit(order, orderItems);
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("code", true);
-        jsonObject.put("msg", "购买成功");
+        if(orderService.buyFruit(order, orderItems)){
+            jsonObject.put("code", true);
+            jsonObject.put("msg", "购买成功");
+        }else {
+            jsonObject.put("code", false);
+            jsonObject.put("msg", "购买失败");
+        }
 
         PrintWriter out = response.getWriter();
         out.print(jsonObject);

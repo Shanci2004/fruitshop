@@ -57,9 +57,17 @@ public class FruitService {
         }
     }
 
-    public void lessenFruit(int fruitId, int quantity){
+    public boolean lessenFruit(int fruitId, int quantity){
         try {
-            fruitDao.lessenFruit(fruitId, quantity);
+            return fruitDao.lessenFruit(fruitId, quantity);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean fruitEnough(int fruitId, int quantity){
+        try {
+            return fruitDao.enoughFruit(fruitId, quantity);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
