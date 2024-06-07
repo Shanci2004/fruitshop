@@ -59,7 +59,7 @@ public class FruitDao {
         String sql1 = "select * from fruit where fruitId = ?";
         Fruit fruit = runner.query(sql1, new BeanHandler<Fruit>(Fruit.class), fruitId);
         if(fruit.getStock()-quantity >= 0){
-            runner.update(sql, fruit.getStock()-quantity, fruit.getSales()+quantity);
+            runner.update(sql, fruit.getStock()-quantity, fruit.getSales()+quantity, fruitId);
             return true;
         }else {
             return false;
