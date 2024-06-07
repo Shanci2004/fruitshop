@@ -13,7 +13,7 @@ import java.util.List;
 public class OrderDao {
     public void insertOrder(Order order) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "insert into order values(?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into `order` values(?, ?, ?, ?, ?, ?, ?)";
         runner.update(sql, order.getOrderId(), order.getUserId(), order.getAddressId(), order.getOrderDate(), order.getStatus(), order.getPaytype(), order.getTotal());
     }
     public void insertOrderItems(OrderItems orderItems) throws SQLException {
