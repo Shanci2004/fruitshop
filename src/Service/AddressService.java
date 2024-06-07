@@ -9,9 +9,17 @@ import java.util.List;
 public class AddressService {
     private AddressDao addressDao = new AddressDao();
 
-    public List<Address> getAddress(int UserId){
+    public List<Address> getAddressListByUserId(int UserId){
         try {
             return addressDao.selectAddressbyUserId(UserId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Address getAddressByAddressId(int addressId){
+        try {
+            return addressDao.selectAddressByAddressId(addressId);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

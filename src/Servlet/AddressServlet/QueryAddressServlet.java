@@ -1,5 +1,6 @@
 package Servlet.AddressServlet;
 
+import Service.AddressService;
 import dao.AddressDao;
 import model.Address;
 import net.sf.json.JSONArray;
@@ -15,7 +16,7 @@ import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "QueryAddressServlet", urlPatterns = "/Query_Address")
 public class QueryAddressServlet extends HttpServlet {
-    private AddressDao addressDao = new AddressDao();
+    private AddressService addressService = new AddressService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -25,7 +26,7 @@ public class QueryAddressServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int userId = Integer.parseInt(request.getParameter("userId"));
         try {
-            List<Address> addresseslist = addressDao.selectAddressbyUserId(userId);
+            List<Address> addresseslist = addressService.getAddressListByUserId(userId);
             JSONObject jsonObject = new JSONObject();
             JSONArray jsonArray = new JSONArray();
             for(Address adrs: addresseslist){

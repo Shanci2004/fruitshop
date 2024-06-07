@@ -2,6 +2,7 @@ package dao;
 
 import model.Address;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import utiils.DataSourceUtils;
 
@@ -14,6 +15,11 @@ public class AddressDao {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from address where userId = ?";
         return runner.query(sql, new BeanListHandler<Address>(Address.class), userId);
+    }
+    public Address selectAddressByAddressId(int addressId) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "select * from address where addressId = ?";
+        return runner.query(sql, new BeanHandler<Address>(Address.class), addressId);
     }
     //添加地址
     public void addAddress(Address address) throws SQLException {
