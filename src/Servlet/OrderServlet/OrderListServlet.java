@@ -34,17 +34,17 @@ public class OrderListServlet extends HttpServlet {
             List<OrderItems> itemsList = orderService.getOrderItems(order.getOrderId());
             JSONObject itemsObject = new JSONObject();
             JSONArray itemsArray = new JSONArray();
+            Address address = addressService.getAddressByAddressId(order.getAddressId());
+            orderObject.put("order", order);
+            orderObject.put("user", user);
+            orderObject.put("address", address);
             for(int i = 0; i < itemsList.size(); i++){
                 Fruit fruit = fruitService.getFruitInfo(itemsList.get(i).getFruitId());
                 itemsObject.put("orderitems", itemsList.get(i));
                 itemsObject.put("fruit", fruit);
                 orderObject.put("items" + i, itemsObject);
+                orderArray.add(orderObject);
             }
-            Address address = addressService.getAddressByAddressId(order.getAddressId());
-            orderObject.put("order", order);
-            orderObject.put("user", user);
-            orderObject.put("address", address);
-            orderArray.add(orderObject);
         }
 
         JSONObject returnObject = new JSONObject();
