@@ -42,7 +42,7 @@ public class OrderListServlet extends HttpServlet {
                 Fruit fruit = fruitService.getFruitInfo(itemsList.get(i).getFruitId());
                 itemsObject.put("orderitems", itemsList.get(i));
                 itemsObject.put("fruit", fruit);
-                orderObject.put("items" + i, itemsObject);
+                orderObject.put("items", itemsObject);
                 orderArray.add(orderObject);
             }
         }
