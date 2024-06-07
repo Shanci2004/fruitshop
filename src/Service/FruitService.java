@@ -57,4 +57,12 @@ public class FruitService {
         }
     }
 
+    public void lessenFruit(int fruitId, int quantity){
+        try {
+            fruitDao.lessenFruit(fruitId, quantity);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

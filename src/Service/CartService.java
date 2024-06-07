@@ -97,4 +97,12 @@ public class CartService {
             throw new RuntimeException(e);
         }
     }
+
+    public void removeCartDetail(int detailId){
+        try {
+            cartDao.deleteCartDetailByDetailId(detailId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

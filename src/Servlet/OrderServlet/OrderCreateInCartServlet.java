@@ -56,6 +56,9 @@ public class OrderCreateInCartServlet extends HttpServlet {
         Order order = new Order(orderId, user.getUserId(), addressId, orderDate, status, paytype, total);
 
         orderService.buyFruitInCart(order, orderItems);
+        for(int i = 0; i < detailIds.length; i++){
+            cartService.removeCartDetail(detailIds[i]);
+        }
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", true);

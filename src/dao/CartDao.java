@@ -60,6 +60,12 @@ public class CartDao {
         runner.update(sql, cartId, fruitId);
     }
 
+    public void deleteCartDetailByDetailId(int detailId) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "delete from cartdetail where detailId = ?";
+        runner.update(sql, detailId);
+    }
+
     public CartDetail selectDetailById(int detailId) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "select * from cartdetail where detailId = ?";

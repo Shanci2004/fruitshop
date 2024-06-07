@@ -42,4 +42,13 @@ public class FruitDao {
         return runner.query(sql, new BeanListHandler<Fruit>(Fruit.class), "%"+keyword+"%" );
     }
 
+    public void lessenFruit(int fruitId, int quantity) throws SQLException {
+        QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+        String sql = "update fruit set stock = ?, sales = ? where fruitId = ?";
+        String sql1 = "select stock from fruit where fruitId = ?";
+        String sql2 = "select sales from fruit where fruitId = ?";
+        int stock = runner.query(sql1, new BeanHandler<Integer>(Integer.class), fruitId);
+        int sales = runner.query(sql2, new BeanHandler<Integer>(Integer.class), fruitId);
+        runner.update(sql, stock-quantity, sales+quantity);
+    }
 }
