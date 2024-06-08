@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "AdminAddFruitServlet", urlPatterns = "/Admin_AddFruit")
-public class AdminAddFruitServlet extends HttpServlet {
+@WebServlet(name = "AdminFruitAddServlet", urlPatterns = "/Admin_AddFruit")
+public class AdminFruitAddServlet extends HttpServlet {
     private FruitService fruitService = new FruitService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

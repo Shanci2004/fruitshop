@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "AdminDeleteUserServlet", urlPatterns = "/Admin_DeleteUser")
+@WebServlet(name = "AdminUserDeleteServlet", urlPatterns = "/Admin_DeleteUser")
 public class AdminUserDeleteServlet extends HttpServlet {
     private UserService userService = new UserService();
     @Override
