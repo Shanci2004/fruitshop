@@ -30,23 +30,21 @@ public class AdminOrderListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Order> orderList = orderService.getAllOrderList();
         JSONArray orderArray = new JSONArray();
+        JSONObject orderObject = new JSONObject();
         for(Order order: orderList){
             User user = userService.getUserById(order.getUserId());
             Address address = addressService.getAddressByAddressId(order.getAddressId());
             List<OrderItems> orderItems = orderService.getOrderItems(order.getOrderId());
-            JSONObject userObject = new JSONObject();
-            userObject.put("user", user);
-            JSONObject addressObject = new JSONObject();
-            addressObject.put("address", address);
-            orderArray.add(order);
-            orderArray.add(userObject);
-            orderArray.add(addressObject);
+            orderObject.put("order", order);
+            orderObject.put("user", user);
+            orderObject.put("address", address);
             JSONObject itemsObject = new JSONObject();
             for(int i = 0; i < orderItems.size(); i++){
                 Fruit fruit = fruitService.getFruitInfo(orderItems.get(i).getFruitId());
                 itemsObject.put("orderitems", orderItems.get(i));
                 itemsObject.put("fruit", fruit);
-                orderArray.add(itemsObject);
+                orderObject.put("items", itemsObject);
+                orderArray.add(orderObject);
             }
         }
 
