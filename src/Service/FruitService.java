@@ -84,4 +84,12 @@ public class FruitService {
         }
     }
 
+    public void modifyFruit(Fruit fruit){
+        try {
+            fruitDao.updateFruit(fruit);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
