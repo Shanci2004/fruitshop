@@ -76,4 +76,12 @@ public class FruitService {
         }
     }
 
+    public void addFruit(Fruit fruit){
+        try {
+            fruitDao.insertFruit(fruit);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

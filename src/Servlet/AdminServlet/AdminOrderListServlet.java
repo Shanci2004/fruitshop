@@ -34,13 +34,19 @@ public class AdminOrderListServlet extends HttpServlet {
             User user = userService.getUserById(order.getUserId());
             Address address = addressService.getAddressByAddressId(order.getAddressId());
             List<OrderItems> orderItems = orderService.getOrderItems(order.getOrderId());
+            JSONObject userObject = new JSONObject();
+            userObject.put("user", user);
+            JSONObject addressObject = new JSONObject();
+            addressObject.put("address", address);
             orderArray.add(order);
-            orderArray.add(user);
-            orderArray.add(address);
+            orderArray.add(userObject);
+            orderArray.add(addressObject);
+            JSONObject itemsObject = new JSONObject();
             for(int i = 0; i < orderItems.size(); i++){
                 Fruit fruit = fruitService.getFruitInfo(orderItems.get(i).getFruitId());
-                orderArray.add(orderItems.get(i));
-                orderArray.add(fruit);
+                itemsObject.put("orderitems", orderItems.get(i));
+                itemsObject.put("fruit", fruit);
+                orderArray.add(itemsObject);
             }
         }
 

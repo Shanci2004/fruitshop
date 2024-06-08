@@ -158,6 +158,20 @@ public class Fruit {
         this.classify = classify;
     }
 
+    public Fruit(String fruitName, double price, int stock, int sales, String cover, String image1, String image2, String image3, String image4, String intro, int classifyId) {
+        this.fruitName = fruitName;
+        this.price = price;
+        this.stock = stock;
+        this.sales = sales;
+        this.cover = cover;
+        this.image1 = image1;
+        this.image2 = image2;
+        this.image3 = image3;
+        this.image4 = image4;
+        this.intro = intro;
+        this.classifyId = classifyId;
+    }
+
     public Fruit() {
     }
 

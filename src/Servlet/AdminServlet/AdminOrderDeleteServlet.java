@@ -1,7 +1,6 @@
 package Servlet.AdminServlet;
 
-import Service.UserService;
-import model.User;
+import Service.OrderService;
 import net.sf.json.JSONObject;
 
 import javax.servlet.*;
@@ -10,9 +9,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "AdminDeleteUserServlet", urlPatterns = "/Admin_DeleteUser")
-public class AdminDeleteUserServlet extends HttpServlet {
-    private UserService userService = new UserService();
+@WebServlet(name = "AdminOrderDeleteServlet", urlPatterns = "/Admin_OrderDelete")
+public class AdminOrderDeleteServlet extends HttpServlet {
+    private OrderService orderService = new OrderService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -20,15 +19,13 @@ public class AdminDeleteUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int userId = Integer.parseInt(request.getParameter("userId"));
+        String orderId = request.getParameter("orderId");
+
+        orderService.deleteOrder(orderId);
+
         JSONObject jsonObject = new JSONObject();
-        if(userService.removeUser(userId)){
-            jsonObject.put("code", true);
-            jsonObject.put("msg", "删除用户成功!");
-        }else {
-            jsonObject.put("code", true);
-            jsonObject.put("msg", "删除用户失败!");
-        }
+        jsonObject.put("code", true);
+        jsonObject.put("msg", "删除订单成功!");
 
         PrintWriter out = response.getWriter();
         out.print(jsonObject);
