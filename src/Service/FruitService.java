@@ -92,4 +92,12 @@ public class FruitService {
         }
     }
 
+    public void removeFruit(int fruitId){
+        try {
+            fruitDao.deleteFruit(fruitId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
