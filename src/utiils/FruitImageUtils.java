@@ -1,10 +1,8 @@
 package utiils;
 
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 import java.io.IOException;
 
-@MultipartConfig
 public class FruitImageUtils{
 
     public static String addImage(Part imagePart){
