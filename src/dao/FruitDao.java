@@ -74,8 +74,8 @@ public class FruitDao {
 
     public void updateFruit(Fruit fruit) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-        String sql = "update fruit set fruitName = ?, price = ?, stock = ?, cover = ?, image1 = ?, image2 = ?, image3 = ?, image4 = ?, intro = ?, classifyId = ?";
-        runner.update(sql, fruit.getFruitName(), fruit.getPrice(), fruit.getStock(), fruit.getCover(), fruit.getImage1(), fruit.getImage2(), fruit.getImage3(), fruit.getImage4(), fruit.getIntro(), fruit.getClassifyId());
+        String sql = "update fruit set fruitName = ?, price = ?, stock = ?, cover = ?, image1 = ?, image2 = ?, image3 = ?, image4 = ?, intro = ?, classifyId = ? where fruitId = ?";
+        runner.update(sql, fruit.getFruitName(), fruit.getPrice(), fruit.getStock(), fruit.getCover(), fruit.getImage1(), fruit.getImage2(), fruit.getImage3(), fruit.getImage4(), fruit.getIntro(), fruit.getClassifyId(), fruit.getFruitId());
     }
 
     public void deleteFruit(int fruitId) throws SQLException {
