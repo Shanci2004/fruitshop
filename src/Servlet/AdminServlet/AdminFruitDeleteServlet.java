@@ -28,6 +28,7 @@ public class AdminFruitDeleteServlet extends HttpServlet {
         jsonObject.put("msg", "删除水果成功!");
 
         PrintWriter out = response.getWriter();
+        out.print(jsonObject);
         out.flush();
         out.close();
     }
