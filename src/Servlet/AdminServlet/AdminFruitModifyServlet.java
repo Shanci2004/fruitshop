@@ -6,12 +6,14 @@ import net.sf.json.JSONObject;
 import utiils.FruitImageUtils;
 
 import javax.servlet.*;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "AdminFruitModifyServlet", urlPatterns = "/Admin_FruitModify")
+@MultipartConfig
 public class AdminFruitModifyServlet extends HttpServlet {
     private FruitService fruitService = new FruitService();
     @Override
