@@ -69,7 +69,7 @@ public class FruitDao {
     public void insertFruit(Fruit fruit) throws SQLException {
         QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
         String sql = "insert into fruit(fruitName, price, stock, sales, cover, image1, image2, image3, image4, intro, classifyId) values(?,?,?,?,?,?,?,?,?,?,?)";
-        runner.update(sql, fruit.getFruitName(), fruit.getPrice(), fruit.getStock(), fruit.getCover(), fruit.getImage1(), fruit.getImage2(), fruit.getImage3(), fruit.getImage4(), fruit.getIntro(), fruit.getClassifyId());
+        runner.update(sql, fruit.getFruitName(), fruit.getPrice(), fruit.getStock(),fruit.getSales(), fruit.getCover(), fruit.getImage1(), fruit.getImage2(), fruit.getImage3(), fruit.getImage4(), fruit.getIntro(), fruit.getClassifyId());
     }
 
     public void updateFruit(Fruit fruit) throws SQLException {
