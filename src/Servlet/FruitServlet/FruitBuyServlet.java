@@ -46,7 +46,7 @@ public class FruitBuyServlet extends HttpServlet {
             jsonObject.put("msg", "购买成功");
         }else {
             jsonObject.put("code", false);
-            jsonObject.put("msg", "购买失败");
+            jsonObject.put("msg", "购买失败,库存不足");
         }
 
         PrintWriter out = response.getWriter();
